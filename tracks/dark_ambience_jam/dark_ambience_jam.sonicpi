@@ -1,0 +1,87 @@
+#-- Sonic Pi Set v1
+#-- meta {"current":0,"zooms":[2,2,2,2,2,2,2,2,2,2]}
+#-- buffer 0
+use_bpm 145
+use_random_seed 42
+
+live_loop :sci_fi do
+  use_synth :hollow
+  with_fx :echo, decay: 3, phase: 2, mix: 0.8 do
+    with_fx :ping_pong do
+      p = play (chord :G3, :minor7).choose - [0, 12, -12].choose, divisor: 0.01, div_slide: rrand(0, 10), depth: rrand(0.001, 2), attack: 0.01, release: rrand(0, 5), amp: 0.5
+      control p, divisor: rrand(0.001, 50)
+      sleep [0.5, 1, 2].choose
+    end
+  end
+end
+
+# long bass
+live_loop :bass do
+  use_synth :bass_foundation
+  with_fx :lpf, cutoff: 42, amp: 2.15 do
+    play_pattern_timed [:g1, :ds2], [2.5, 0.5], release: 0.7, amp: 0.6
+    sleep 2
+    play_pattern_timed [:d2, :c2], [1.5, 0.5], release: 0.7, amp: 0.6
+    sleep 1
+  end
+end
+
+live_loop :arp do
+  use_synth :beep
+  with_fx :echo, decay: 3, phase: 2, mix: 0.8 do
+    with_fx :flanger, amp: 0.2 do
+      p = play (chord :G4, :m11).choose - [0, 7, -5, 12, -12].choose, divisor: 0.01, div_slide: rrand(0, 10), depth: rrand(0.001, 2), attack: 0.01, release: rrand(0, 5), amp: 0.2
+      sleep 0.5
+    end
+  end
+end
+
+live_loop :kick do
+  sample :bd_808, amp: 4
+  with_fx :lpf, cutoff: 65 do
+    play :c1
+    sleep 1
+  end
+end
+
+live_loop :hat do
+  sample :hat_gnu, amp: 0.25
+  with_fx :flanger, amp: 0.2 do
+    play :c1
+    sleep 1
+  end
+end
+
+
+#-- buffer 2
+# Welcome to Sonic Pi
+
+
+#-- buffer 3
+# Welcome to Sonic Pi
+
+
+#-- buffer 4
+# Welcome to Sonic Pi
+
+
+#-- buffer 5
+# Welcome to Sonic Pi
+
+
+#-- buffer 6
+# Welcome to Sonic Pi
+
+
+#-- buffer 7
+# Welcome to Sonic Pi
+
+
+#-- buffer 8
+# Welcome to Sonic Pi
+
+
+#-- buffer 9
+# Welcome to Sonic Pi
+
+
